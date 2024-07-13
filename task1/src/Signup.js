@@ -19,11 +19,16 @@ function Signup() {
         );
         if(name.current.value&&email.current.value&&password.current.value)
         {
+            localStorage.setItem("signup","true")
             localStorage.setItem("name",name.current.value)
+
             localStorage.setItem("email",email.current.value)
             localStorage.setItem("password",password.current.value)
             alert("welcome")
             navigate("/");
+
+
+
         }
            
     }
