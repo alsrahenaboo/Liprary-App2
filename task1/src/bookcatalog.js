@@ -137,9 +137,9 @@ function Bookcatalog() {
     axios
       .put(
         `https://liprary-app-default-rtdb.firebaseio.com/books/${id}.json`,
-        {
-          isDeleted: true,
-        }
+        // {
+        //   isDeleted: true,
+        // }
       )
       .then((res) => {
         setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
@@ -159,7 +159,7 @@ function Bookcatalog() {
         setBooks((prevBooks) =>
           prevBooks.map((b) => (b.id === book.id ? { ...b, ...book } : b))
         );
-        setEditBook(null);
+        setEditBook(null);//بعد ما ضفناه البيانات مشان اي تحديث لازم تبلش ب defult
       })
       .catch((err) => {
         console.log(err);
@@ -167,7 +167,7 @@ function Bookcatalog() {
   };
 
   const handleEditChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; //e.target العنصر الي صار فيه التغيير 
     setEditBook((prevBook) => ({
       ...prevBook,
       [name]: value,
@@ -180,8 +180,10 @@ function Bookcatalog() {
   };
 
   return (
+    
     <div className="container">
       {books.map((book) => (
+        
         <div key={book.id} className="card2">
           {editBook && editBook.id === book.id ? (
             <form onSubmit={handleEditSubmit}>
@@ -224,8 +226,10 @@ function Bookcatalog() {
             </>
           )}
         </div>
+        
       ))}
     </div>
+    
   );
 }
 
